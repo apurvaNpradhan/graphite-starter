@@ -3,7 +3,8 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { env } from "cloudflare:workers";
 
 import type { DB } from "better-auth/adapters/drizzle";
-import schema from "../db/schema";
+import * as schema from "../db/schema/auth";
+import { nextCookies } from "better-auth/next-js";
 export function createAuth(db: DB) {
    return betterAuth({
       database: drizzleAdapter(db, {
@@ -16,6 +17,7 @@ export function createAuth(db: DB) {
          enabled: true,
       },
       secret: env.BETTER_AUTH_SECRET,
+      plugins: [nextCookies()],
       baseURL: env.BETTER_AUTH_URL,
       advanced: {
          defaultCookieAttributes: {
