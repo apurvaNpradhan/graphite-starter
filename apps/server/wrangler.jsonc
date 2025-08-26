@@ -1,22 +1,20 @@
 {
-	"name": "graphite-starter-server",
-	"main": "src/index.ts",
-	"compatibility_date": "2025-06-15",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"vars": {
-		"NODE_ENV": "production"
-		// Add public environment variables here
-		// Example: "CORS_ORIGIN": "https://your-domain.com"
-	},
-	"hyperdrive": [
-		{
-			"binding": "HYPERDRIVE",
-			"id": "b970f347fd4743508f9d352de23228ec"
-		}
-	]
-	// For sensitive data, use:
-	// wrangler secret put SECRET_NAME
-	// Don't add secrets to "vars" - they're visible in the dashboard!
+   "name": "graphite-starter-server",
+   "main": "src/index.ts",
+   "compatibility_date": "2025-06-15",
+   "compatibility_flags": ["nodejs_compat"],
+   "vars": {
+      "NODE_ENV": "production",
+      // Add public environment variables here
+      "CORS_ORIGIN": "http://localhost:3001"
+   },
+   "hyperdrive": [
+      {
+         "binding": "HYPERDRIVE",
+         "id": "b970f347fd4743508f9d352de23228ec"
+      }
+   ]
+   // For sensitive data, use:
+   // wrangler secret put SECRET_NAME
+   // Don't add secrets to "vars" - they're visible in the dashboard!
 }

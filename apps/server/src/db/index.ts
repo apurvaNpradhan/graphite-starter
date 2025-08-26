@@ -11,8 +11,8 @@ export const db = drizzle(sql);
  */
 
 import { drizzle } from "drizzle-orm/postgres-js";
-import * as schema from "./schema/auth";
 import postgres from "postgres";
+import schema from "./schema";
 export function createDb(db: Hyperdrive) {
    const client = postgres(db.connectionString, {
       max: 1,

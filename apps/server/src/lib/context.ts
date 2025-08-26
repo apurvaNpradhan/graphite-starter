@@ -4,9 +4,9 @@
 import type { CreateHTTPContextOptions } from "@trpc/server/adapters/standalone";
 import type { Session, User } from "better-auth/types";
 import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import * as schema from "../db/schema/auth";
 import type { env } from "cloudflare:workers";
 import type { Auth } from "./auth";
+import type { DbSchema } from "../db/schema";
 /**
  * Context object passed to all tRPC procedures.
  *
@@ -37,7 +37,7 @@ export type TRPCContext = {
    info: CreateHTTPContextOptions["info"];
 
    /** Drizzle ORM database instance (PostgreSQL via Hyperdrive) */
-   db: PostgresJsDatabase<typeof schema>;
+   db: PostgresJsDatabase<DbSchema>;
 
    /** Authenticated user session (null if not authenticated) */
    session: Session | null;
@@ -73,7 +73,7 @@ export type TRPCContext = {
 export type AppContext = {
    Bindings: typeof env;
    Variables: {
-      db: PostgresJsDatabase<typeof schema>;
+      db: PostgresJsDatabase<DbSchema>;
       auth: Auth;
       session: Session | null;
       user: User | null;

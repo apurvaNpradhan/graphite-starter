@@ -1,15 +1,15 @@
-import { user } from "@/db/schema/auth";
+import { user } from "../db/schema/auth";
 import { protectedProcedure, publicProcedure, router } from "../lib/trpc";
 import { TRPCError } from "@trpc/server";
-import type { DrizzleError } from "drizzle-orm";
+import { eq, type DrizzleError } from "drizzle-orm";
 
 export const appRouter = router({
    healthCheck: publicProcedure.query(() => {
       return "OK";
    }),
-   listUsers: publicProcedure.query(async ({ ctx }) => {
+   listUsers: protectedProcedure.query(async ({ ctx }) => {
       try {
-         const data = await ctx.db.select().from(user);
+         const data = await ctx.db.select().from(user).where(eq(user.id, ctx.user.id));
          if (data) {
             return {
                users: data,
