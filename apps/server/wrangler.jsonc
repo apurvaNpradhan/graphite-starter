@@ -6,8 +6,8 @@
    "vars": {
       "NODE_ENV": "production",
       // Add public environment variables here
-      "CORS_ORIGIN": "https://graphite-starter-web.vercel.app"
-      // "CORS_ORIGIN": "http://localhost:3001"
+      // "CORS_ORIGIN": "https://graphite-starter-web.vercel.app"
+      "CORS_ORIGIN": "http://localhost:3000"
    },
    "hyperdrive": [
       {

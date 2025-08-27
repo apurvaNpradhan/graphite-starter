@@ -69,6 +69,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@better-fetch/fetch':
+        specifier: ^1.1.18
+        version: 1.1.18
       '@tanstack/react-form':
         specifier: ^1.12.3
         version: 1.19.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
